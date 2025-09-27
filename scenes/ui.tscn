@@ -1,0 +1,371 @@
+[gd_scene load_steps=38 format=3 uid="uid://crm7yb3pkf0g6"]
+
+[ext_resource type="Script" uid="uid://du6e8uo1d0qes" path="res://ui.gd" id="1_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://o8724q2wxln3" path="res://assets/sprites/ui.png" id="2_yev5y"]
+[ext_resource type="PackedScene" uid="uid://bakgkby4bi7sv" path="res://scenes/guid.tscn" id="3_yev5y"]
+[ext_resource type="FontFile" uid="uid://dp2xh3qppm60j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_wm3ai"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="5_8dubc"]
+[ext_resource type="Shader" uid="uid://byonpiw3mshfq" path="res://shaders/screenEffect.gdshader" id="6_8dubc"]
+[ext_resource type="Material" uid="uid://cpdkvxnj64niq" path="res://shaders/backgroundMaterial.tres" id="7_p7vwb"]
+[ext_resource type="AudioStream" uid="uid://chdfdj5wtsau1" path="res://assets/sounds/click.wav" id="8_ktti3"]
+[ext_resource type="PackedScene" uid="uid://bk0swboyc5bw3" path="res://scenes/volume_slider.tscn" id="9_cgfq5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dubc"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7vwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdt2y"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ai"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktti3"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgfq5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yev5y"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdt2y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7vwb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktti3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgfq5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dvkv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdcm2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rmj2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsv74"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cof4p"]
+size = Vector2(80, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1mc3"]
+size = Vector2(80, 25)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7vwb"]
+shader = ExtResource("6_8dubc")
+
+[sub_resource type="DPITexture" id="DPITexture_cgfq5"]
+
+[sub_resource type="DPITexture" id="DPITexture_7dvkv"]
+
+[sub_resource type="DPITexture" id="DPITexture_vdcm2"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".37\"/></svg>
+"
+base_scale = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsv74"]
+content_margin_left = 1.0
+content_margin_top = 0.0
+content_margin_right = 1.0
+content_margin_bottom = 0.0
+bg_color = Color(0.20784314, 0.18039216, 0.27450982, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1mc3"]
+content_margin_left = 1.0
+content_margin_top = 0.0
+content_margin_right = 1.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.6313726)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsj0x"]
+content_margin_left = 1.0
+content_margin_top = 0.0
+content_margin_right = 1.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0.6313726)
+corner_detail = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dvkv"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdcm2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rmj2"]
+atlas = ExtResource("2_yev5y")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsj0x"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x4jx1")
+
+[node name="UIButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="ExitButton" type="TouchScreenButton" parent="UIButtons"]
+position = Vector2(-23, 11)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_8dubc")
+shape = SubResource("RectangleShape2D_p7vwb")
+
+[node name="GuidButton" type="TouchScreenButton" parent="UIButtons"]
+position = Vector2(-23, 26.999998)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_gdt2y")
+shape = SubResource("RectangleShape2D_wm3ai")
+
+[node name="RestartButton" type="TouchScreenButton" parent="UIButtons"]
+position = Vector2(-23, 43)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_ktti3")
+shape = SubResource("RectangleShape2D_cgfq5")
+
+[node name="FullScreenButton" type="TouchScreenButton" parent="UIButtons"]
+position = Vector2(-23, 58.999996)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_yev5y")
+shape = SubResource("RectangleShape2D_gdt2y")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Guid" parent="Control/Control" instance=ExtResource("3_yev5y")]
+visible = false
+position = Vector2(0, -7)
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.38214827, 0.38214827)
+mouse_filter = 1
+
+[node name="FoldableContainer" type="FoldableContainer" parent="Control2"]
+layout_mode = 0
+offset_left = 23.55107
+offset_top = 23.551067
+offset_right = 112.55107
+offset_bottom = 55.551067
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_wm3ai")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_p7vwb")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_ktti3")
+theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_cgfq5")
+theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_7dvkv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vdcm2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rmj2")
+folded = true
+title = "Choose Difficulty"
+
+[node name="Control" type="Control" parent="Control2/FoldableContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EasyButton" type="TouchScreenButton" parent="Control2/FoldableContainer/Control"]
+position = Vector2(39.251785, 23.251778)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_qsv74")
+
+[node name="Polygon2D" type="Polygon2D" parent="Control2/FoldableContainer/Control/EasyButton"]
+position = Vector2(-5.233578, -5.233571)
+polygon = PackedVector2Array(40, -8, 40, 16, -32, 16, -32, -8)
+
+[node name="Label" type="Label" parent="Control2/FoldableContainer/Control/EasyButton"]
+offset_left = -34.01822
+offset_top = -13.083927
+offset_right = 32.98178
+offset_bottom = 9.916073
+theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 8
+text = "Easy"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MediumButton" type="TouchScreenButton" parent="Control2/FoldableContainer/Control"]
+position = Vector2(39.25178, 52.03642)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_cof4p")
+
+[node name="Polygon2D3" type="Polygon2D" parent="Control2/FoldableContainer/Control/MediumButton"]
+position = Vector2(-4.634983, -3.6642923)
+polygon = PackedVector2Array(40, -8, 40, 16, -32, 16, -32, -8)
+
+[node name="Label3" type="Label" parent="Control2/FoldableContainer/Control/MediumButton"]
+offset_left = -36.635002
+offset_top = -10.467142
+offset_right = 34.364998
+offset_bottom = 12.532858
+theme_override_colors/font_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 8
+text = "Medium"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HardButton" type="TouchScreenButton" parent="Control2/FoldableContainer/Control"]
+position = Vector2(39.251785, 83.43785)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_h1mc3")
+
+[node name="Polygon2D2" type="Polygon2D" parent="Control2/FoldableContainer/Control/HardButton"]
+position = Vector2(-5.233578, -5.233571)
+polygon = PackedVector2Array(40, -8, 40, 16, -32, 16, -32, -8)
+
+[node name="Label2" type="Label" parent="Control2/FoldableContainer/Control/HardButton"]
+offset_left = -34.01822
+offset_top = -13.083928
+offset_right = 32.98178
+offset_bottom = 9.916072
+theme_override_colors/font_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 8
+text = "Hard"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ImpossibleButton" type="TouchScreenButton" parent="Control2/FoldableContainer/Control"]
+position = Vector2(39.251785, 114.83928)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_cof4p")
+
+[node name="Polygon2D3" type="Polygon2D" parent="Control2/FoldableContainer/Control/ImpossibleButton"]
+position = Vector2(-4.634983, -3.6642923)
+polygon = PackedVector2Array(40, -8, 40, 16, -32, 16, -32, -8)
+
+[node name="Label3" type="Label" parent="Control2/FoldableContainer/Control/ImpossibleButton"]
+offset_left = -36.634983
+offset_top = -11.664292
+offset_right = 34.365017
+offset_bottom = 11.335708
+theme_override_colors/font_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+theme_override_fonts/font = ExtResource("5_8dubc")
+theme_override_font_sizes/font_size = 8
+text = "Impossible"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_p7vwb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayerBG" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayerBG"]
+z_index = -15
+material = ExtResource("7_p7vwb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.22352941, 0.19215687, 0.29411766, 1)
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ktti3")
+bus = &"SFX"
+
+[node name="Music" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -50.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Volume_Slider" parent="Music" instance=ExtResource("9_cgfq5")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -42.0
+offset_right = 2.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("DPITexture_cgfq5")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_7dvkv")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_vdcm2")
+theme_override_styles/slider = SubResource("StyleBoxFlat_qsv74")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_h1mc3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vsj0x")
+value = 0.8
+
+[node name="MusicButton" type="TouchScreenButton" parent="Music"]
+unique_name_in_owner = true
+position = Vector2(13, 11.999994)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_7dvkv")
+shape = SubResource("RectangleShape2D_vdcm2")
+
+[node name="SFXButton" type="TouchScreenButton" parent="Music"]
+unique_name_in_owner = true
+position = Vector2(13, 27.999994)
+scale = Vector2(0.7, 0.7)
+texture_normal = SubResource("AtlasTexture_6rmj2")
+shape = SubResource("RectangleShape2D_vsj0x")
+
+[connection signal="pressed" from="UIButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UIButtons/GuidButton" to="." method="_on_guid_button_pressed"]
+[connection signal="pressed" from="UIButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UIButtons/FullScreenButton" to="." method="_on_full_screen_button_pressed"]
+[connection signal="close_guid" from="Control/Control/Guid" to="." method="_on_guid_close_guid"]
+[connection signal="folding_changed" from="Control2/FoldableContainer" to="." method="_on_foldable_container_folding_changed"]
+[connection signal="pressed" from="Control2/FoldableContainer/Control/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="Control2/FoldableContainer/Control/MediumButton" to="." method="_on_medium_button_pressed"]
+[connection signal="pressed" from="Control2/FoldableContainer/Control/HardButton" to="." method="_on_hard_button_pressed"]
+[connection signal="pressed" from="Control2/FoldableContainer/Control/ImpossibleButton" to="." method="_on_impossible_button_pressed"]
+[connection signal="pressed" from="Music/MusicButton" to="." method="_on_music_button_pressed"]
+[connection signal="pressed" from="Music/SFXButton" to="." method="_on_sfx_button_pressed"]

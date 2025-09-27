@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://co5ggubsrvs1i"]
+
+[ext_resource type="Texture2D" uid="uid://cpo31mte4gfgy" path="res://assets/sprites/buildings.png" id="1_2x682"]
+[ext_resource type="Script" uid="uid://7skcerppwxhd" path="res://scripts/tower.gd" id="1_ay4al"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="3_ktxwe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktxwe"]
+radius = 26.5
+
+[node name="tower" type="Area2D" groups=["towers"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ay4al")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_2x682")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -6)
+shape = SubResource("CircleShape2D_ktxwe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 22.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("3_ktxwe")
+theme_override_font_sizes/font_size = 8
+text = "332"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

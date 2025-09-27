@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://crstw0qow5kbk"]
+
+[ext_resource type="Script" uid="uid://vmevei3pkxof" path="res://scripts/protester_button.gd" id="1_j0o51"]
+[ext_resource type="Texture2D" uid="uid://c484sdttkblle" path="res://assets/sprites/coin.png" id="3_j0o51"]
+[ext_resource type="AudioStream" uid="uid://bpwjjrlnwpqut" path="res://assets/sounds/coin.wav" id="4_07n8g"]
+[ext_resource type="FontFile" uid="uid://dp2xh3qppm60j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_tv1fr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv1fr"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0o51"]
+size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_tv1fr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j0o51"]
+resource_name = "bounce"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07n8g"]
+_data = {
+&"RESET": SubResource("Animation_tv1fr"),
+&"bounce": SubResource("Animation_j0o51")
+}
+
+[node name="ProtesterButton" type="TouchScreenButton"]
+shape = SubResource("RectangleShape2D_tv1fr")
+script = ExtResource("1_j0o51")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+mouse_filter = 2
+color = Color(0.23529412, 0.23529412, 0.23529412, 0.78431374)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.23529412, 0.23529412, 0.23529412, 0.78431374)
+
+[node name="CostNumber" type="Label" parent="."]
+offset_left = -10.0
+offset_top = 5.0
+offset_right = 30.0
+offset_bottom = 28.0
+scale = Vector2(0.49771237, 0.49771237)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("4_tv1fr")
+theme_override_font_sizes/font_size = 8
+text = "5"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j0o51")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("3_j0o51")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_07n8g")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_07n8g")
+volume_db = -5.0
+bus = &"SFX"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

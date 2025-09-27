@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://5tp36hxffe1l"]
+
+[ext_resource type="Script" uid="uid://bns7piklrp0sw" path="res://notif.gd" id="1_l5kor"]
+[ext_resource type="Texture2D" uid="uid://bh1egn8v5t3hv" path="res://assets/sprites/protesters.png" id="2_a5m3x"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="3_a5m3x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egpio"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_felfa"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwpcv"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxfx5"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihnee"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpkk2"]
+atlas = ExtResource("2_a5m3x")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynqep"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egpio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_felfa")
+}],
+"loop": true,
+"name": &"idle 1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwpcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxfx5")
+}],
+"loop": true,
+"name": &"idle 2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihnee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpkk2")
+}],
+"loop": true,
+"name": &"idle 3",
+"speed": 5.0
+}]
+
+[node name="notif" type="Node2D"]
+position = Vector2(-26, -5)
+script = ExtResource("1_l5kor")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+polygon = PackedVector2Array(8, -16, 8, 8, -208, 8, -208, -16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.0000005, -8)
+scale = Vector2(2.3665776, 2.3665776)
+sprite_frames = SubResource("SpriteFrames_ynqep")
+animation = &"idle 3"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -58.0
+offset_top = -6.0
+offset_right = 133.0
+offset_bottom = 17.0
+theme_override_fonts/font = ExtResource("3_a5m3x")
+theme_override_font_sizes/font_size = 8
+text = "finished!!!"
+horizontal_alignment = 1
+vertical_alignment = 1

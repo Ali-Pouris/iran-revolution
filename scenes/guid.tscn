@@ -1,0 +1,218 @@
+[gd_scene load_steps=18 format=3 uid="uid://bakgkby4bi7sv"]
+
+[ext_resource type="Script" uid="uid://dx7oh23w7v6ge" path="res://scenes/guid.gd" id="1_k12ah"]
+[ext_resource type="FontFile" uid="uid://dp2xh3qppm60j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_sraot"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="2_mlnga"]
+[ext_resource type="Texture2D" uid="uid://cpo31mte4gfgy" path="res://assets/sprites/buildings.png" id="3_k12ah"]
+[ext_resource type="Texture2D" uid="uid://dxxjjgsi83773" path="res://assets/sprites/iran.png" id="4_c7t0x"]
+[ext_resource type="Texture2D" uid="uid://bh1egn8v5t3hv" path="res://assets/sprites/protesters.png" id="5_hwrar"]
+[ext_resource type="Texture2D" uid="uid://o8724q2wxln3" path="res://assets/sprites/ui.png" id="6_mlnga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlnga"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sraot"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlnga"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k12ah"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7t0x"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwrar"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsb8k"]
+atlas = ExtResource("5_hwrar")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ektkl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sraot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlnga")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k12ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7t0x")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwrar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsb8k")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ektkl"]
+atlas = ExtResource("6_mlnga")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh8jo"]
+
+[node name="Guid" type="Node2D"]
+script = ExtResource("1_k12ah")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-123, -115)
+color = Color(0, 0, 0, 0.972549)
+polygon = PackedVector2Array(64, 64, 192, 64, 192, 184, 64, 184)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -27.0
+offset_top = -44.0
+offset_right = 129.0
+offset_bottom = -21.0
+scale = Vector2(0.37836483, 0.37836483)
+theme_override_fonts/font = ExtResource("1_sraot")
+text = "how to play"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -36.0
+offset_top = -29.0
+offset_right = 182.0
+offset_bottom = -5.0
+scale = Vector2(0.35503376, 0.35503376)
+theme_override_fonts/font = ExtResource("2_mlnga")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mlnga")
+text = "capture 7 cities!"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 18.0
+scale = Vector2(0.34007442, 0.34007442)
+theme_override_fonts/font = ExtResource("2_mlnga")
+text = "Strong"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 27.0
+offset_top = -4.9999924
+offset_right = 215.0
+offset_bottom = 18.0
+scale = Vector2(0.34007442, 0.34007442)
+theme_override_fonts/font = ExtResource("2_mlnga")
+text = "Weak"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-12, -3)
+texture = ExtResource("3_k12ah")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(20, -3)
+texture = ExtResource("3_k12ah")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-119, -107)
+polygon = PackedVector2Array(121, 101, 128, 106, 121, 112, 121, 110, 126, 106, 121, 103)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-35.299873, 30.000015)
+scale = Vector2(0.19625139, 0.19625139)
+texture = ExtResource("4_c7t0x")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = -20.299911
+offset_top = 22.999985
+offset_right = 323.70007
+offset_bottom = 76.999985
+scale = Vector2(0.23775421, 0.23775421)
+theme_override_fonts/font = ExtResource("2_mlnga")
+text = "hold down left click on map 
+to drop the boys! 
+(yeah boooy)"
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-29.299889, 21)
+texture = ExtResource("5_hwrar")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(-177.2999, -71)
+rotation = -0.32913837
+color = Color(0.03385333, 0.033853255, 0.0338533, 0.8392157)
+polygon = PackedVector2Array(111.47861, 144.80598, 107.99319, 145.72896, 109.332825, 135.6193, 116.880035, 141.36731, 114.96403, 143.88304, 115.886986, 147.36847, 112.401566, 148.29143)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(-177.2999, -71)
+rotation = -0.32913837
+polygon = PackedVector2Array(112, 144, 109, 145, 110, 138, 116, 142, 114, 144, 115, 147, 113, 147)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, 38)
+sprite_frames = SubResource("SpriteFrames_ektkl")
+animation = &"new_animation_1"
+autoplay = "new_animation_1"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 34)
+sprite_frames = SubResource("SpriteFrames_ektkl")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(49, 37)
+sprite_frames = SubResource("SpriteFrames_ektkl")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Label6" type="Label" parent="."]
+offset_left = -45.999996
+offset_top = 50.999996
+offset_right = 386.0
+offset_bottom = 105.0
+scale = Vector2(0.23775421, 0.23775421)
+theme_override_fonts/font = ExtResource("2_mlnga")
+text = "!!! Remember Momentum Matters !!!
+
+Restart if you stuck :D"
+horizontal_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(50, -48)
+texture_normal = SubResource("AtlasTexture_ektkl")
+shape = SubResource("RectangleShape2D_sh8jo")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

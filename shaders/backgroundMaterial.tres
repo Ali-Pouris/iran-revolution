@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpdkvxnj64niq"]
+
+[ext_resource type="Shader" uid="uid://bmf78pr11da74" path="res://shaders/background.gdshader" id="1_rqixw"]
+
+[resource]
+shader = ExtResource("1_rqixw")
+shader_parameter/color_one = Color(0.20910653, 0.17941546, 0.2727819, 1)
+shader_parameter/color_two = Color(0.22352941, 0.19215687, 0.29411766, 1)
+shader_parameter/angle = 70.0
+shader_parameter/line_count = 70.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
+shader_parameter/custom_time = 0.0

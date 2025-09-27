@@ -1,0 +1,1878 @@
+[gd_scene load_steps=27 format=3 uid="uid://b3ghg3v4iqr4p"]
+
+[ext_resource type="Script" uid="uid://dk2w33gnieqcm" path="res://scripts/game_manager_main_menu.gd" id="1_wu84c"]
+[ext_resource type="Texture2D" uid="uid://c3m7kjpy420qh" path="res://assets/sprites/world_tileset.png" id="2_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cvg6xapg70s42" path="res://assets/sprites/irans.png" id="2_wu84c"]
+[ext_resource type="PackedScene" uid="uid://co5ggubsrvs1i" path="res://scenes/tower.tscn" id="3_8ln24"]
+[ext_resource type="FontFile" uid="uid://dp2xh3qppm60j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_oa1go"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="4_tbmy8"]
+[ext_resource type="PackedScene" uid="uid://crkesprxtmtmt" path="res://scenes/protester.tscn" id="4_wu84c"]
+[ext_resource type="AudioStream" uid="uid://d3il4jnpm3d83" path="res://assets/sounds/unlock.wav" id="8_tbmy8"]
+[ext_resource type="PackedScene" uid="uid://bvhwl80xxy2xp" path="res://scenes/bars.tscn" id="9_jk1qb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk1qb"]
+size = Vector2(66, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbmy8"]
+size = Vector2(66, 20)
+
+[sub_resource type="Animation" id="Animation_tbmy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_oa1go"]
+resource_name = "idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, -50), Vector2(5, -55), Vector2(5, -50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jk1qb"]
+_data = {
+&"RESET": SubResource("Animation_tbmy8"),
+&"idle": SubResource("Animation_oa1go")
+}
+
+[sub_resource type="Animation" id="Animation_lgwnu"]
+resource_name = "grow"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonArea2D/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_flqon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonArea2D/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rcqid"]
+resource_name = "shrink"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonArea2D/CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ajci"]
+resource_name = "click"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcqid"]
+_data = {
+&"RESET": SubResource("Animation_flqon"),
+&"click": SubResource("Animation_1ajci"),
+&"grow": SubResource("Animation_lgwnu"),
+&"shrink": SubResource("Animation_rcqid")
+}
+
+[sub_resource type="Curve" id="Curve_oa1go"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5639535, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oa1go"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k01j"]
+atlas = ExtResource("2_wu84c")
+
+[sub_resource type="Animation" id="Animation_7b55j"]
+resource_name = "Intro"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Iran:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Iran:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("YSort:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bars:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1.2, 1.2), Vector2(0.99999994, 0.99999994)]
+}
+
+[sub_resource type="Animation" id="Animation_5pajh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Iran:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Iran:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("YSort:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bars:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99999994, 0.99999994)]
+}
+
+[sub_resource type="Animation" id="Animation_jk1qb"]
+resource_name = "outro"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenu:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Iran:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("YSort:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Iran:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bars:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.99999994, 0.99999994), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7ex8"]
+_data = {
+&"Intro": SubResource("Animation_7b55j"),
+&"RESET": SubResource("Animation_5pajh"),
+&"outro": SubResource("Animation_jk1qb")
+}
+
+[node name="MainMenu" type="Node"]
+
+[node name="GameLevel" type="Node2D" parent="."]
+
+[node name="Bars" parent="GameLevel" instance=ExtResource("9_jk1qb")]
+z_index = -2
+position = Vector2(131, 103)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="GameManager" type="Node" parent="GameLevel"]
+script = ExtResource("1_wu84c")
+
+[node name="MainMenu" type="Node2D" parent="GameLevel"]
+position = Vector2(269, 130)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameLevel/MainMenu"]
+position = Vector2(5, -50)
+scale = Vector2(0.65474963, 0.65474963)
+texture = ExtResource("2_8ln24")
+region_enabled = true
+region_rect = Rect2(0, 160, 224, 88)
+
+[node name="PlayButton" type="TouchScreenButton" parent="GameLevel/MainMenu"]
+position = Vector2(3.3319092, 21.808975)
+shape = SubResource("RectangleShape2D_jk1qb")
+
+[node name="Polygon2D" type="Polygon2D" parent="GameLevel/MainMenu/PlayButton"]
+position = Vector2(-1, 14)
+polygon = PackedVector2Array(33, -22, 33, -6, -31, -6, -31, -22)
+
+[node name="Label" type="Label" parent="GameLevel/MainMenu/PlayButton"]
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.22352941, 0.19215687, 0.29411766, 1)
+theme_override_fonts/font = ExtResource("3_oa1go")
+theme_override_font_sizes/font_size = 8
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonArea2D" type="Area2D" parent="GameLevel/MainMenu"]
+position = Vector2(3.3319092, 21.808975)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameLevel/MainMenu/ButtonArea2D"]
+shape = SubResource("RectangleShape2D_tbmy8")
+
+[node name="Label" type="Label" parent="GameLevel/MainMenu"]
+offset_left = -23.668106
+offset_top = 45.808975
+offset_right = 560.3319
+offset_bottom = 99.808975
+scale = Vector2(0.19136351, 0.19136351)
+theme_override_fonts/font = ExtResource("4_tbmy8")
+text = "This game was made for"
+
+[node name="Label3" type="Label" parent="GameLevel/MainMenu"]
+offset_left = -29.66809
+offset_top = 50.808975
+offset_right = 554.3319
+offset_bottom = 104.808975
+scale = Vector2(0.19136351, 0.19136351)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_oa1go")
+text = "INTERSTELLAR GAME JAM 8"
+
+[node name="Label2" type="Label" parent="GameLevel/MainMenu"]
+offset_left = -52.66809
+offset_top = -13.191032
+offset_right = 531.3319
+offset_bottom = 40.808975
+scale = Vector2(0.19136351, 0.19136351)
+theme_override_fonts/font = ExtResource("4_tbmy8")
+text = "created by: Ali Mohammad Ali Pour"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameLevel/MainMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_jk1qb")
+}
+autoplay = "idle"
+
+[node name="PlayButtonAnim" type="AnimationPlayer" parent="GameLevel/MainMenu"]
+libraries = {
+&"": SubResource("AnimationLibrary_rcqid")
+}
+
+[node name="Iran" type="Node2D" parent="GameLevel"]
+position = Vector2(131, 105)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="GameLevel/Iran"]
+z_index = -2
+amount = 20
+lifetime = 2.0
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 69.08
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+scale_amount_min = 100.0
+scale_amount_max = 100.0
+scale_amount_curve = SubResource("Curve_oa1go")
+color = Color(1, 1, 1, 0.6745098)
+color_ramp = SubResource("Gradient_oa1go")
+
+[node name="Sprite2D" type="Sprite2D" parent="GameLevel/Iran"]
+z_index = -2
+position = Vector2(5, 7)
+texture = SubResource("AtlasTexture_1k01j")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 160)
+
+[node name="Area2D" type="Area2D" parent="GameLevel/Iran"]
+position = Vector2(7, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameLevel/Iran/Area2D"]
+polygon = PackedVector2Array(-19, -40, -8, -42, 1, -51, 14, -54, 28, -52, 40, -43, 48, -38, 50, -23, 47, -11, 49, 1, 56, 5, 57, 12, 50, 19, 57, 28, 67, 33, 67, 48, 57, 61, 40, 60, 24, 61, 20, 49, 13, 47, 3, 53, -15, 45, -26, 39, -31, 25, -38, 19, -48, 20, -53, 9, -55, -1, -65, -10, -68, -25, -62, -30, -68, -38, -74, -53, -72, -70, -59, -61, -54, -63, -46, -70, -42, -65, -43, -59, -40, -55, -38, -49, -32, -47, -26, -42)
+
+[node name="iranLabels" type="Node2D" parent="GameLevel/Iran"]
+position = Vector2(-148, -100)
+
+[node name="Label" type="Label" parent="GameLevel/Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 118.00001
+offset_top = 134.00002
+offset_right = 270.0
+offset_bottom = 157.00002
+rotation = 0.79728144
+scale = Vector2(0.24137777, 0.24137777)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("4_tbmy8")
+text = "Persian Gulf"
+
+[node name="Label2" type="Label" parent="GameLevel/Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 181.00002
+offset_top = 169.0
+offset_right = 333.0
+offset_bottom = 192.0
+scale = Vector2(0.1650135, 0.1650135)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("4_tbmy8")
+text = "Gulf of Oman"
+
+[node name="Label3" type="Label" parent="GameLevel/Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 121.0
+offset_top = 46.000004
+offset_right = 273.0
+offset_bottom = 69.0
+scale = Vector2(0.1650135, 0.1650135)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("4_tbmy8")
+text = "Caspian Sea"
+
+[node name="Node2D" type="Node2D" parent="GameLevel"]
+position = Vector2(193, 109)
+
+[node name="Camera2D" type="Camera2D" parent="GameLevel/Node2D"]
+position_smoothing_enabled = true
+
+[node name="YSort" type="Node2D" parent="GameLevel"]
+y_sort_enabled = true
+position = Vector2(132, 104)
+
+[node name="Towers" type="Node2D" parent="GameLevel/YSort"]
+y_sort_enabled = true
+position = Vector2(-132, -104)
+
+[node name="tower" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(127, 91)
+isDecorative = true
+
+[node name="tower2" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(85, 71)
+type = 2
+isDecorative = true
+
+[node name="tower3" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(159, 85)
+isDecorative = true
+
+[node name="tower4" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(132, 140)
+type = 2
+isDecorative = true
+
+[node name="tower5" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(173, 155)
+isDecorative = true
+
+[node name="tower6" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(164, 121)
+type = 4
+isDecorative = true
+
+[node name="tower7" parent="GameLevel/YSort/Towers" instance=ExtResource("3_8ln24")]
+position = Vector2(99, 109)
+type = 3
+isDecorative = true
+
+[node name="Protesters" type="Node2D" parent="GameLevel/YSort"]
+y_sort_enabled = true
+position = Vector2(-132, -104)
+
+[node name="Protester" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(154, 101)
+isGod = true
+
+[node name="Protester2" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(147, 111)
+isGod = true
+type = 2
+
+[node name="Protester3" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(149, 104)
+isGod = true
+type = 3
+
+[node name="Protester4" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(145, 98)
+isGod = true
+
+[node name="Protester5" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(152, 109)
+isGod = true
+type = 2
+
+[node name="Protester6" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(142, 104)
+isGod = true
+type = 3
+
+[node name="Protester7" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(143, 108)
+isGod = true
+
+[node name="Protester8" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(136, 118)
+isGod = true
+type = 2
+
+[node name="Protester9" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(138, 111)
+isGod = true
+type = 3
+
+[node name="Protester10" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(134, 105)
+isGod = true
+
+[node name="Protester11" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(141, 116)
+isGod = true
+type = 2
+
+[node name="Protester12" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(131, 111)
+isGod = true
+type = 3
+
+[node name="Protester13" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(134, 94)
+isGod = true
+
+[node name="Protester14" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(127, 104)
+isGod = true
+type = 2
+
+[node name="Protester15" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(129, 97)
+isGod = true
+type = 3
+
+[node name="Protester16" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(125, 91)
+isGod = true
+
+[node name="Protester17" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(132, 102)
+isGod = true
+type = 2
+
+[node name="Protester18" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(122, 97)
+isGod = true
+type = 3
+
+[node name="Protester19" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(157, 83)
+isGod = true
+
+[node name="Protester20" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(150, 93)
+isGod = true
+type = 2
+
+[node name="Protester21" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(152, 86)
+isGod = true
+type = 3
+
+[node name="Protester22" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(148, 80)
+isGod = true
+
+[node name="Protester23" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(155, 91)
+isGod = true
+type = 2
+
+[node name="Protester24" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(145, 86)
+isGod = true
+type = 3
+
+[node name="Protester25" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(146, 90)
+isGod = true
+
+[node name="Protester26" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(139, 100)
+isGod = true
+type = 2
+
+[node name="Protester27" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(141, 93)
+isGod = true
+type = 3
+
+[node name="Protester28" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(137, 87)
+isGod = true
+
+[node name="Protester29" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(144, 98)
+isGod = true
+type = 2
+
+[node name="Protester30" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(134, 93)
+isGod = true
+type = 3
+
+[node name="Protester31" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(137, 76)
+isGod = true
+
+[node name="Protester32" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(130, 86)
+isGod = true
+type = 2
+
+[node name="Protester33" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(132, 79)
+isGod = true
+type = 3
+
+[node name="Protester34" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(128, 73)
+isGod = true
+
+[node name="Protester35" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(135, 84)
+isGod = true
+type = 2
+
+[node name="Protester36" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(125, 79)
+isGod = true
+type = 3
+
+[node name="Protester37" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(180, 73)
+isGod = true
+
+[node name="Protester38" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(173, 83)
+isGod = true
+type = 2
+
+[node name="Protester39" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(175, 76)
+isGod = true
+type = 3
+
+[node name="Protester40" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(171, 70)
+isGod = true
+
+[node name="Protester41" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(178, 81)
+isGod = true
+type = 2
+
+[node name="Protester42" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(168, 76)
+isGod = true
+type = 3
+
+[node name="Protester43" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(169, 80)
+isGod = true
+
+[node name="Protester44" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(162, 90)
+isGod = true
+type = 2
+
+[node name="Protester45" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(164, 83)
+isGod = true
+type = 3
+
+[node name="Protester46" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(160, 77)
+isGod = true
+
+[node name="Protester47" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(167, 88)
+isGod = true
+type = 2
+
+[node name="Protester48" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(157, 83)
+isGod = true
+type = 3
+
+[node name="Protester49" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(160, 66)
+isGod = true
+
+[node name="Protester50" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(153, 76)
+isGod = true
+type = 2
+
+[node name="Protester51" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(155, 69)
+isGod = true
+type = 3
+
+[node name="Protester52" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(151, 63)
+isGod = true
+
+[node name="Protester53" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(158, 74)
+isGod = true
+type = 2
+
+[node name="Protester54" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(148, 69)
+isGod = true
+type = 3
+
+[node name="Protester55" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(182, 84)
+isGod = true
+
+[node name="Protester56" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(175, 94)
+isGod = true
+type = 2
+
+[node name="Protester57" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(177, 87)
+isGod = true
+type = 3
+
+[node name="Protester58" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(173, 81)
+isGod = true
+
+[node name="Protester59" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(180, 92)
+isGod = true
+type = 2
+
+[node name="Protester60" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(170, 87)
+isGod = true
+type = 3
+
+[node name="Protester61" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(171, 91)
+isGod = true
+
+[node name="Protester62" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(164, 101)
+isGod = true
+type = 2
+
+[node name="Protester63" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(166, 94)
+isGod = true
+type = 3
+
+[node name="Protester64" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(162, 88)
+isGod = true
+
+[node name="Protester65" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(169, 99)
+isGod = true
+type = 2
+
+[node name="Protester66" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(159, 94)
+isGod = true
+type = 3
+
+[node name="Protester67" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(162, 77)
+isGod = true
+
+[node name="Protester68" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(155, 87)
+isGod = true
+type = 2
+
+[node name="Protester69" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(157, 80)
+isGod = true
+type = 3
+
+[node name="Protester70" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(153, 74)
+isGod = true
+
+[node name="Protester71" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(160, 85)
+isGod = true
+type = 2
+
+[node name="Protester72" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(150, 80)
+isGod = true
+type = 3
+
+[node name="Protester73" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(181, 110)
+isGod = true
+
+[node name="Protester74" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(174, 120)
+isGod = true
+type = 2
+
+[node name="Protester75" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(176, 113)
+isGod = true
+type = 3
+
+[node name="Protester76" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(172, 107)
+isGod = true
+
+[node name="Protester77" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(179, 118)
+isGod = true
+type = 2
+
+[node name="Protester78" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(169, 113)
+isGod = true
+type = 3
+
+[node name="Protester79" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(170, 117)
+isGod = true
+
+[node name="Protester80" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(163, 127)
+isGod = true
+type = 2
+
+[node name="Protester81" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(165, 120)
+isGod = true
+type = 3
+
+[node name="Protester82" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(161, 114)
+isGod = true
+
+[node name="Protester83" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(168, 125)
+isGod = true
+type = 2
+
+[node name="Protester84" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(158, 120)
+isGod = true
+type = 3
+
+[node name="Protester85" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(161, 103)
+isGod = true
+
+[node name="Protester86" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(154, 113)
+isGod = true
+type = 2
+
+[node name="Protester87" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(156, 106)
+isGod = true
+type = 3
+
+[node name="Protester88" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(152, 100)
+isGod = true
+
+[node name="Protester89" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(159, 111)
+isGod = true
+type = 2
+
+[node name="Protester90" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(149, 106)
+isGod = true
+type = 3
+
+[node name="Protester91" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(186, 117)
+isGod = true
+
+[node name="Protester92" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(179, 127)
+isGod = true
+type = 2
+
+[node name="Protester93" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(181, 120)
+isGod = true
+type = 3
+
+[node name="Protester94" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(177, 114)
+isGod = true
+
+[node name="Protester95" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(184, 125)
+isGod = true
+type = 2
+
+[node name="Protester96" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(174, 120)
+isGod = true
+type = 3
+
+[node name="Protester97" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(175, 124)
+isGod = true
+
+[node name="Protester98" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(168, 134)
+isGod = true
+type = 2
+
+[node name="Protester99" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(170, 127)
+isGod = true
+type = 3
+
+[node name="Protester100" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(166, 121)
+isGod = true
+
+[node name="Protester101" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(173, 132)
+isGod = true
+type = 2
+
+[node name="Protester102" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(163, 127)
+isGod = true
+type = 3
+
+[node name="Protester103" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(166, 110)
+isGod = true
+
+[node name="Protester104" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(159, 120)
+isGod = true
+type = 2
+
+[node name="Protester105" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(161, 113)
+isGod = true
+type = 3
+
+[node name="Protester106" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(157, 107)
+isGod = true
+
+[node name="Protester107" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(164, 118)
+isGod = true
+type = 2
+
+[node name="Protester108" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(154, 113)
+isGod = true
+type = 3
+
+[node name="Protester109" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(115, 105)
+isGod = true
+
+[node name="Protester110" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(108, 115)
+isGod = true
+type = 2
+
+[node name="Protester111" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(110, 108)
+isGod = true
+type = 3
+
+[node name="Protester112" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(106, 102)
+isGod = true
+
+[node name="Protester113" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(113, 113)
+isGod = true
+type = 2
+
+[node name="Protester114" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(103, 108)
+isGod = true
+type = 3
+
+[node name="Protester115" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(104, 112)
+isGod = true
+
+[node name="Protester116" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(97, 122)
+isGod = true
+type = 2
+
+[node name="Protester117" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(99, 115)
+isGod = true
+type = 3
+
+[node name="Protester118" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(95, 109)
+isGod = true
+
+[node name="Protester119" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(102, 120)
+isGod = true
+type = 2
+
+[node name="Protester120" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(92, 115)
+isGod = true
+type = 3
+
+[node name="Protester121" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(95, 98)
+isGod = true
+
+[node name="Protester122" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(88, 108)
+isGod = true
+type = 2
+
+[node name="Protester123" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(90, 101)
+isGod = true
+type = 3
+
+[node name="Protester124" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(86, 95)
+isGod = true
+
+[node name="Protester125" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(93, 106)
+isGod = true
+type = 2
+
+[node name="Protester126" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(83, 101)
+isGod = true
+type = 3
+
+[node name="Protester127" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(111, 108)
+isGod = true
+
+[node name="Protester128" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(104, 118)
+isGod = true
+type = 2
+
+[node name="Protester129" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(106, 111)
+isGod = true
+type = 3
+
+[node name="Protester130" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(102, 105)
+isGod = true
+
+[node name="Protester131" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(109, 116)
+isGod = true
+type = 2
+
+[node name="Protester132" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(99, 111)
+isGod = true
+type = 3
+
+[node name="Protester133" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(100, 115)
+isGod = true
+
+[node name="Protester134" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(93, 125)
+isGod = true
+type = 2
+
+[node name="Protester135" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(95, 118)
+isGod = true
+type = 3
+
+[node name="Protester136" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(91, 112)
+isGod = true
+
+[node name="Protester137" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(98, 123)
+isGod = true
+type = 2
+
+[node name="Protester138" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(88, 118)
+isGod = true
+type = 3
+
+[node name="Protester139" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(91, 101)
+isGod = true
+
+[node name="Protester140" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(84, 111)
+isGod = true
+type = 2
+
+[node name="Protester141" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(86, 104)
+isGod = true
+type = 3
+
+[node name="Protester142" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(82, 98)
+isGod = true
+
+[node name="Protester143" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(89, 109)
+isGod = true
+type = 2
+
+[node name="Protester144" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(79, 104)
+isGod = true
+type = 3
+
+[node name="Protester145" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(132, 88)
+isGod = true
+
+[node name="Protester146" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(125, 98)
+isGod = true
+type = 2
+
+[node name="Protester147" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(127, 91)
+isGod = true
+type = 3
+
+[node name="Protester148" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(123, 85)
+isGod = true
+
+[node name="Protester149" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(130, 96)
+isGod = true
+type = 2
+
+[node name="Protester150" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(120, 91)
+isGod = true
+type = 3
+
+[node name="Protester151" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(121, 95)
+isGod = true
+
+[node name="Protester152" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(114, 105)
+isGod = true
+type = 2
+
+[node name="Protester153" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(116, 98)
+isGod = true
+type = 3
+
+[node name="Protester154" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(112, 92)
+isGod = true
+
+[node name="Protester155" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(119, 103)
+isGod = true
+type = 2
+
+[node name="Protester156" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(109, 98)
+isGod = true
+type = 3
+
+[node name="Protester157" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(112, 81)
+isGod = true
+
+[node name="Protester158" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(105, 91)
+isGod = true
+type = 2
+
+[node name="Protester159" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(107, 84)
+isGod = true
+type = 3
+
+[node name="Protester160" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(103, 78)
+isGod = true
+
+[node name="Protester161" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(110, 89)
+isGod = true
+type = 2
+
+[node name="Protester162" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(100, 84)
+isGod = true
+type = 3
+
+[node name="Protester163" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(142, 75)
+isGod = true
+
+[node name="Protester164" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(135, 85)
+isGod = true
+type = 2
+
+[node name="Protester165" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(137, 78)
+isGod = true
+type = 3
+
+[node name="Protester166" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(133, 72)
+isGod = true
+
+[node name="Protester167" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(140, 83)
+isGod = true
+type = 2
+
+[node name="Protester168" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(130, 78)
+isGod = true
+type = 3
+
+[node name="Protester169" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(131, 82)
+isGod = true
+
+[node name="Protester170" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(124, 92)
+isGod = true
+type = 2
+
+[node name="Protester171" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(126, 85)
+isGod = true
+type = 3
+
+[node name="Protester172" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(122, 79)
+isGod = true
+
+[node name="Protester173" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(129, 90)
+isGod = true
+type = 2
+
+[node name="Protester174" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(119, 85)
+isGod = true
+type = 3
+
+[node name="Protester175" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(122, 68)
+isGod = true
+
+[node name="Protester176" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(115, 78)
+isGod = true
+type = 2
+
+[node name="Protester177" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(117, 71)
+isGod = true
+type = 3
+
+[node name="Protester178" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(113, 65)
+isGod = true
+
+[node name="Protester179" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(120, 76)
+isGod = true
+type = 2
+
+[node name="Protester180" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(110, 71)
+isGod = true
+type = 3
+
+[node name="Protester181" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(153, 72)
+isGod = true
+
+[node name="Protester182" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(146, 82)
+isGod = true
+type = 2
+
+[node name="Protester183" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(148, 75)
+isGod = true
+type = 3
+
+[node name="Protester184" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(144, 69)
+isGod = true
+
+[node name="Protester185" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(151, 80)
+isGod = true
+type = 2
+
+[node name="Protester186" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(141, 75)
+isGod = true
+type = 3
+
+[node name="Protester187" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(142, 79)
+isGod = true
+
+[node name="Protester188" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(135, 89)
+isGod = true
+type = 2
+
+[node name="Protester189" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(137, 82)
+isGod = true
+type = 3
+
+[node name="Protester190" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(133, 76)
+isGod = true
+
+[node name="Protester191" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(140, 87)
+isGod = true
+type = 2
+
+[node name="Protester192" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(130, 82)
+isGod = true
+type = 3
+
+[node name="Protester193" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(133, 65)
+isGod = true
+
+[node name="Protester194" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(126, 75)
+isGod = true
+type = 2
+
+[node name="Protester195" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(128, 68)
+isGod = true
+type = 3
+
+[node name="Protester196" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(124, 62)
+isGod = true
+
+[node name="Protester197" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(131, 73)
+isGod = true
+type = 2
+
+[node name="Protester198" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(121, 68)
+isGod = true
+type = 3
+
+[node name="Protester199" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(144, 134)
+isGod = true
+
+[node name="Protester200" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(137, 144)
+isGod = true
+type = 2
+
+[node name="Protester201" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(139, 137)
+isGod = true
+type = 3
+
+[node name="Protester202" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(135, 131)
+isGod = true
+
+[node name="Protester203" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(142, 142)
+isGod = true
+type = 2
+
+[node name="Protester204" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(132, 137)
+isGod = true
+type = 3
+
+[node name="Protester205" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(133, 141)
+isGod = true
+
+[node name="Protester206" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(126, 151)
+isGod = true
+type = 2
+
+[node name="Protester207" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(128, 144)
+isGod = true
+type = 3
+
+[node name="Protester208" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(124, 138)
+isGod = true
+
+[node name="Protester209" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(131, 149)
+isGod = true
+type = 2
+
+[node name="Protester210" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(121, 144)
+isGod = true
+type = 3
+
+[node name="Protester211" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(124, 127)
+isGod = true
+
+[node name="Protester212" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(117, 137)
+isGod = true
+type = 2
+
+[node name="Protester213" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(119, 130)
+isGod = true
+type = 3
+
+[node name="Protester214" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(115, 124)
+isGod = true
+
+[node name="Protester215" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(122, 135)
+isGod = true
+type = 2
+
+[node name="Protester216" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(112, 130)
+isGod = true
+type = 3
+
+[node name="Protester217" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(195, 147)
+isGod = true
+
+[node name="Protester218" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(188, 157)
+isGod = true
+type = 2
+
+[node name="Protester219" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(190, 150)
+isGod = true
+type = 3
+
+[node name="Protester220" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(186, 144)
+isGod = true
+
+[node name="Protester221" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(193, 155)
+isGod = true
+type = 2
+
+[node name="Protester222" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(183, 150)
+isGod = true
+type = 3
+
+[node name="Protester223" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(184, 154)
+isGod = true
+
+[node name="Protester224" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(177, 164)
+isGod = true
+type = 2
+
+[node name="Protester225" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(179, 157)
+isGod = true
+type = 3
+
+[node name="Protester226" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(175, 151)
+isGod = true
+
+[node name="Protester227" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(182, 162)
+isGod = true
+type = 2
+
+[node name="Protester228" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(172, 157)
+isGod = true
+type = 3
+
+[node name="Protester229" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(175, 140)
+isGod = true
+
+[node name="Protester230" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(168, 150)
+isGod = true
+type = 2
+
+[node name="Protester231" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(170, 143)
+isGod = true
+type = 3
+
+[node name="Protester232" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(166, 137)
+isGod = true
+
+[node name="Protester233" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(173, 148)
+isGod = true
+type = 2
+
+[node name="Protester234" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(163, 143)
+isGod = true
+type = 3
+
+[node name="Protester235" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(101, 59)
+isGod = true
+
+[node name="Protester236" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(94, 69)
+isGod = true
+type = 2
+
+[node name="Protester237" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(96, 62)
+isGod = true
+type = 3
+
+[node name="Protester238" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(92, 56)
+isGod = true
+
+[node name="Protester239" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(99, 67)
+isGod = true
+type = 2
+
+[node name="Protester240" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(89, 62)
+isGod = true
+type = 3
+
+[node name="Protester241" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(90, 66)
+isGod = true
+
+[node name="Protester242" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(83, 76)
+isGod = true
+type = 2
+
+[node name="Protester243" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(85, 69)
+isGod = true
+type = 3
+
+[node name="Protester244" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(81, 63)
+isGod = true
+
+[node name="Protester245" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(88, 74)
+isGod = true
+type = 2
+
+[node name="Protester246" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(78, 69)
+isGod = true
+type = 3
+
+[node name="Protester247" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(81, 52)
+isGod = true
+
+[node name="Protester248" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(74, 62)
+isGod = true
+type = 2
+
+[node name="Protester249" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(76, 55)
+isGod = true
+type = 3
+
+[node name="Protester250" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(72, 49)
+isGod = true
+
+[node name="Protester251" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(79, 60)
+isGod = true
+type = 2
+
+[node name="Protester252" parent="GameLevel/YSort/Protesters" instance=ExtResource("4_wu84c")]
+position = Vector2(69, 55)
+isGod = true
+type = 3
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="GameLevel"]
+stream = ExtResource("8_tbmy8")
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="protestorAudio" type="AudioStreamPlayer2D" parent="GameLevel"]
+stream = ExtResource("8_tbmy8")
+bus = &"SFX"
+
+[node name="Intro" type="AnimationPlayer" parent="GameLevel"]
+libraries = {
+&"": SubResource("AnimationLibrary_j7ex8")
+}
+autoplay = "Intro"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="pressed" from="GameLevel/MainMenu/PlayButton" to="GameLevel/GameManager" method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="GameLevel/MainMenu/ButtonArea2D" to="GameLevel/GameManager" method="_on_button_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameLevel/MainMenu/ButtonArea2D" to="GameLevel/GameManager" method="_on_button_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="GameLevel/Iran/Area2D" to="GameLevel/GameManager" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameLevel/Iran/Area2D" to="GameLevel/GameManager" method="_on_area_2d_mouse_exited"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower" to="GameLevel/GameManager" method="_on_tower_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower" to="GameLevel/GameManager" method="_on_tower_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower2" to="GameLevel/GameManager" method="_on_tower_2_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower2" to="GameLevel/GameManager" method="_on_tower_2_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower3" to="GameLevel/GameManager" method="_on_tower_3_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower3" to="GameLevel/GameManager" method="_on_tower_3_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower4" to="GameLevel/GameManager" method="_on_tower_4_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower4" to="GameLevel/GameManager" method="_on_tower_4_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower5" to="GameLevel/GameManager" method="_on_tower_5_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower5" to="GameLevel/GameManager" method="_on_tower_5_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower6" to="GameLevel/GameManager" method="_on_tower_6_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower6" to="GameLevel/GameManager" method="_on_tower_6_tower_up"]
+[connection signal="tower_died" from="GameLevel/YSort/Towers/tower7" to="GameLevel/GameManager" method="_on_tower_7_tower_died"]
+[connection signal="tower_up" from="GameLevel/YSort/Towers/tower7" to="GameLevel/GameManager" method="_on_tower_7_tower_up"]
+[connection signal="animation_finished" from="GameLevel/Intro" to="GameLevel/GameManager" method="_on_intro_animation_finished"]

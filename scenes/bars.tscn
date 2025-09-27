@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvhwl80xxy2xp"]
+
+[ext_resource type="Script" uid="uid://dfsr711q4ym4n" path="res://scripts/bars.gd" id="1_6eosy"]
+
+[node name="Bars" type="Node2D" node_paths=PackedStringArray("audio_player")]
+rotation = 0.17453292
+script = ExtResource("1_6eosy")
+audio_player = NodePath("")

@@ -1,0 +1,936 @@
+[gd_scene load_steps=41 format=3 uid="uid://cmsny0auhvesf"]
+
+[ext_resource type="Script" uid="uid://jfehgmosfrxf" path="res://scripts/game_manager.gd" id="1_3tmo4"]
+[ext_resource type="PackedScene" uid="uid://co5ggubsrvs1i" path="res://scenes/tower.tscn" id="2_6fv2f"]
+[ext_resource type="FontFile" uid="uid://4hlydejtx08g" path="res://assets/fonts/PixelOperator8.ttf" id="2_hjd5e"]
+[ext_resource type="PackedScene" uid="uid://crstw0qow5kbk" path="res://scenes/protesterButton.tscn" id="2_oslck"]
+[ext_resource type="FontFile" uid="uid://dp2xh3qppm60j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_1k01j"]
+[ext_resource type="Texture2D" uid="uid://cvg6xapg70s42" path="res://assets/sprites/irans.png" id="4_oslck"]
+[ext_resource type="Texture2D" uid="uid://cpo31mte4gfgy" path="res://assets/sprites/buildings.png" id="5_hfoqy"]
+[ext_resource type="Texture2D" uid="uid://c484sdttkblle" path="res://assets/sprites/coin.png" id="6_bf4eo"]
+[ext_resource type="PackedScene" uid="uid://dly0muesaegfw" path="res://scenes/protesterAllButton.tscn" id="7_48o5i"]
+[ext_resource type="PackedScene" uid="uid://bae82y5h3h0rc" path="res://scenes/protesterActiveButton.tscn" id="7_aqf4n"]
+[ext_resource type="PackedScene" uid="uid://cwmypcmmnax50" path="res://scenes/lock.tscn" id="8_aqf4n"]
+[ext_resource type="PackedScene" uid="uid://5tp36hxffe1l" path="res://scenes/notif.tscn" id="11_1rrsa"]
+[ext_resource type="AudioStream" uid="uid://d3il4jnpm3d83" path="res://assets/sounds/unlock.wav" id="13_3b7dt"]
+[ext_resource type="PackedScene" uid="uid://bvhwl80xxy2xp" path="res://scenes/bars.tscn" id="14_586pk"]
+[ext_resource type="AudioStream" uid="uid://q5kotypodp4s" path="res://assets/sounds/game-level-completed.wav" id="15_48o5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rrsa"]
+size = Vector2(66, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqf4n"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rrsa"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5fpy"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b7dt"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586pk"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48o5i"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtbx"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7flv"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvfxe"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xihjm"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v452s"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g220c"]
+atlas = ExtResource("6_bf4eo")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7k53e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqf4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rrsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5fpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b7dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48o5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qtbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7flv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvfxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xihjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v452s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g220c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_j5fpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("notif:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("notif:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6100973, 0.6100973)]
+}
+
+[sub_resource type="Animation" id="Animation_1rrsa"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("notif:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("notif:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3b7dt"]
+_data = {
+&"RESET": SubResource("Animation_j5fpy"),
+&"fade_in": SubResource("Animation_1rrsa")
+}
+
+[sub_resource type="Curve" id="Curve_1rrsa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5639535, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_j5fpy"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k01j"]
+atlas = ExtResource("4_oslck")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bf4eo"]
+bg_color = Color(13.046553, 13.046553, 13.046553, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+
+[sub_resource type="Animation" id="Animation_3b7dt"]
+resource_name = "intro"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ui:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playerRecord:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Iran:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Iran:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("YSort:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bars:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(1.2, 1.2), Vector2(0.99999994, 0.99999994)]
+}
+
+[sub_resource type="Animation" id="Animation_586pk"]
+resource_name = "outro"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ui:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playerRecord:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Iran:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Iran:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("YSort:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_48o5i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ui:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("playerRecord:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Iran:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Iran:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("YSort:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bars:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bars:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99999994, 0.99999994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qtbx"]
+_data = {
+&"RESET": SubResource("Animation_48o5i"),
+&"intro": SubResource("Animation_3b7dt"),
+&"outro": SubResource("Animation_586pk")
+}
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Bars" parent="." instance=ExtResource("14_586pk")]
+z_index = -2
+position = Vector2(131, 103)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_3tmo4")
+
+[node name="playerRecord" type="Label" parent="."]
+offset_left = 61.0
+offset_right = 457.0
+offset_bottom = 92.0
+scale = Vector2(0.3037761, 0.3037761)
+theme_override_fonts/font = ExtResource("2_hjd5e")
+text = "00:00:00:000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Victory" type="Node2D" parent="."]
+visible = false
+position = Vector2(-11, 16)
+
+[node name="Goal" type="Node2D" parent="Victory"]
+position = Vector2(259, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="Victory/Goal"]
+position = Vector2(32, -17)
+scale = Vector2(1.5072584, 1.5072584)
+texture = ExtResource("5_hfoqy")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="GoalLabel" type="Label" parent="Victory/Goal"]
+offset_top = -1.0
+offset_right = 70.0
+offset_bottom = 22.0
+scale = Vector2(0.91228366, 0.91228366)
+theme_override_fonts/font = ExtResource("3_1k01j")
+theme_override_font_sizes/font_size = 8
+text = "Goal: 7 / 7"
+
+[node name="Label" type="Label" parent="Victory"]
+offset_left = 227.0
+offset_top = 58.0
+offset_right = 455.0
+offset_bottom = 81.0
+scale = Vector2(0.573723, 0.573723)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_1k01j")
+text = "Congratulations"
+
+[node name="Label2" type="Label" parent="Victory"]
+offset_left = 233.00002
+offset_top = 69.00001
+offset_right = 629.0
+offset_bottom = 161.0
+scale = Vector2(0.3037761, 0.3037761)
+theme_override_fonts/font = ExtResource("2_hjd5e")
+text = "You were able to take 
+control of all the cities.
+This revolution was successful."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TouchScreenButton" parent="Victory"]
+position = Vector2(293, 140)
+shape = SubResource("RectangleShape2D_1rrsa")
+
+[node name="Polygon2D" type="Polygon2D" parent="Victory/PlayButton"]
+position = Vector2(-1, 14)
+polygon = PackedVector2Array(33, -22, 33, -6, -31, -6, -31, -22)
+
+[node name="Label" type="Label" parent="Victory/PlayButton"]
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(0.22352941, 0.19215687, 0.29411766, 1)
+theme_override_fonts/font = ExtResource("3_1k01j")
+theme_override_font_sizes/font_size = 8
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ui" type="Node2D" parent="."]
+position = Vector2(276, 110)
+
+[node name="ColorRect" type="ColorRect" parent="Ui"]
+visible = false
+offset_left = 321.0
+offset_top = 98.0
+offset_right = 361.0
+offset_bottom = 138.0
+scale = Vector2(0.021367162, 2.142073)
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Ui"]
+visible = false
+offset_left = 250.00003
+offset_top = 98.0
+offset_right = 290.00003
+offset_bottom = 138.0
+scale = Vector2(0.021367162, 2.142073)
+mouse_filter = 2
+
+[node name="Node2D" type="Node2D" parent="Ui"]
+visible = false
+position = Vector2(207, 114)
+
+[node name="FightingLabel1" type="Label" parent="Ui/Node2D"]
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("2_hjd5e")
+theme_override_font_sizes/font_size = 8
+text = "45"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightingLabel2" type="Label" parent="Ui/Node2D"]
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("2_hjd5e")
+theme_override_font_sizes/font_size = 8
+text = "45"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightingLabel3" type="Label" parent="Ui/Node2D"]
+offset_left = -20.0
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("2_hjd5e")
+theme_override_font_sizes/font_size = 8
+text = "45"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Ui/Node2D"]
+offset_left = -21.0
+offset_top = -45.0
+offset_right = 135.0
+offset_bottom = -22.0
+scale = Vector2(0.37473625, 0.37473625)
+theme_override_fonts/font = ExtResource("3_1k01j")
+text = "Fighting"
+
+[node name="InStock" type="Node2D" parent="Ui"]
+visible = false
+position = Vector2(228, 139)
+
+[node name="Label4" type="Label" parent="Ui/InStock"]
+offset_left = -28.0
+offset_top = -45.0
+offset_right = 128.0
+offset_bottom = -22.0
+scale = Vector2(0.37473625, 0.37473625)
+theme_override_fonts/font = ExtResource("3_1k01j")
+text = "Ready To
+Drop Boy"
+
+[node name="Score" type="Node2D" parent="Ui"]
+position = Vector2(-12, 72)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ui/Score"]
+sprite_frames = SubResource("SpriteFrames_7k53e")
+animation = &"idle"
+autoplay = "idle"
+frame = 8
+frame_progress = 0.5472393
+
+[node name="MoneyLabel" type="Label" parent="Ui/Score"]
+offset_left = 7.0
+offset_top = -11.0
+offset_right = 55.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.06879827, 0.06879828, 0.06879828, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_1k01j")
+theme_override_font_sizes/font_size = 8
+text = "100"
+vertical_alignment = 1
+
+[node name="Active" type="Node2D" parent="Ui"]
+position = Vector2(25, -22)
+
+[node name="ProtesterBuyButton1" parent="Ui/Active" instance=ExtResource("2_oslck")]
+position = Vector2(-2, 0)
+
+[node name="ProtesterBuyButton4" parent="Ui/Active" instance=ExtResource("7_48o5i")]
+position = Vector2(28, 0)
+
+[node name="ProtesterBuyButton2" parent="Ui/Active" instance=ExtResource("2_oslck")]
+visible = false
+position = Vector2(-2, 32)
+type = 2
+
+[node name="ProtesterBuyButton5" parent="Ui/Active" instance=ExtResource("7_48o5i")]
+visible = false
+position = Vector2(28, 32)
+
+[node name="ProtesterBuyButton3" parent="Ui/Active" instance=ExtResource("2_oslck")]
+visible = false
+position = Vector2(-2, 64)
+type = 3
+
+[node name="ProtesterBuyButton6" parent="Ui/Active" instance=ExtResource("7_48o5i")]
+visible = false
+position = Vector2(28, 64)
+
+[node name="ProtesterActiveButton1" parent="Ui/Active" instance=ExtResource("7_aqf4n")]
+position = Vector2(-53, 0)
+active = true
+
+[node name="ProtesterActiveButton2" parent="Ui/Active" instance=ExtResource("7_aqf4n")]
+visible = false
+position = Vector2(-53, 32)
+type = 2
+
+[node name="ProtesterActiveButton3" parent="Ui/Active" instance=ExtResource("7_aqf4n")]
+visible = false
+position = Vector2(-53, 64)
+type = 3
+
+[node name="Goal" type="Node2D" parent="Ui/Active"]
+position = Vector2(-53, -34)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ui/Active/Goal"]
+position = Vector2(32, -17)
+scale = Vector2(1.5072584, 1.5072584)
+texture = ExtResource("5_hfoqy")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="GoalLabel" type="Label" parent="Ui/Active/Goal"]
+unique_name_in_owner = true
+offset_top = -1.0
+offset_right = 70.0
+offset_bottom = 22.0
+scale = Vector2(0.91228366, 0.91228366)
+theme_override_fonts/font = ExtResource("3_1k01j")
+theme_override_font_sizes/font_size = 8
+text = "Goal: 0 / 7"
+
+[node name="OneCityLock" parent="Ui/Active" instance=ExtResource("8_aqf4n")]
+position = Vector2(-23, 30)
+text = "need 1      to unlock"
+
+[node name="TwoCityLock" parent="Ui/Active" instance=ExtResource("8_aqf4n")]
+position = Vector2(-23, 62)
+text = "need 2      to unlock"
+
+[node name="notif" parent="Ui" instance=ExtResource("11_1rrsa")]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(-134, -66)
+scale = Vector2(0.6100973, 0.6100973)
+
+[node name="AnimationNotifPlayer" type="AnimationPlayer" parent="Ui"]
+libraries = {
+&"": SubResource("AnimationLibrary_3b7dt")
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Ui"]
+position = Vector2(-283, -104)
+
+[node name="Iran" type="Node2D" parent="."]
+position = Vector2(131, 105)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Iran"]
+modulate = Color(1, 1, 1, 0.39215687)
+z_index = -2
+amount = 20
+lifetime = 2.0
+speed_scale = 0.2
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 69.08
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_min = 10.0
+angular_velocity_max = 20.0
+scale_amount_min = 100.0
+scale_amount_max = 100.0
+scale_amount_curve = SubResource("Curve_1rrsa")
+color = Color(1, 1, 1, 0.6745098)
+color_ramp = SubResource("Gradient_j5fpy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Iran"]
+z_index = -2
+position = Vector2(5, 7)
+texture = SubResource("AtlasTexture_1k01j")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 160)
+
+[node name="Area2D" type="Area2D" parent="Iran"]
+position = Vector2(7, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Iran/Area2D"]
+polygon = PackedVector2Array(-19, -40, -8, -42, 1, -51, 14, -54, 28, -52, 40, -43, 48, -38, 50, -23, 47, -11, 49, 1, 56, 5, 57, 12, 50, 19, 57, 28, 67, 33, 67, 48, 57, 61, 40, 60, 24, 61, 20, 49, 13, 47, 3, 53, -15, 45, -26, 39, -31, 25, -38, 19, -48, 20, -53, 9, -55, -1, -65, -10, -68, -25, -62, -30, -68, -38, -74, -53, -72, -70, -59, -61, -54, -63, -46, -70, -42, -65, -43, -59, -40, -55, -38, -49, -32, -47, -26, -42)
+
+[node name="Label" type="Label" parent="Iran"]
+unique_name_in_owner = true
+visible = false
+offset_left = 69.0
+offset_top = 8.0
+offset_right = 238.0
+offset_bottom = 31.0
+scale = Vector2(0.6561101, 0.6561101)
+theme_override_colors/font_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+theme_override_fonts/font = ExtResource("3_1k01j")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_bf4eo")
+text = "Iranian Revolution 1978"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="iranLabels" type="Node2D" parent="Iran"]
+position = Vector2(-148, -100)
+
+[node name="Label" type="Label" parent="Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 118.00001
+offset_top = 134.00002
+offset_right = 270.0
+offset_bottom = 157.00002
+rotation = 0.79728144
+scale = Vector2(0.24137777, 0.24137777)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("2_hjd5e")
+text = "Persian Gulf"
+
+[node name="Label2" type="Label" parent="Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 181.00002
+offset_top = 169.0
+offset_right = 333.0
+offset_bottom = 192.0
+scale = Vector2(0.1650135, 0.1650135)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("2_hjd5e")
+text = "Gulf of Oman"
+
+[node name="Label3" type="Label" parent="Iran/iranLabels"]
+modulate = Color(1, 1, 1, 0.654902)
+offset_left = 121.0
+offset_top = 46.000004
+offset_right = 273.0
+offset_bottom = 69.0
+scale = Vector2(0.1650135, 0.1650135)
+theme_override_colors/font_color = Color(0.22352941, 0.47058824, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("2_hjd5e")
+text = "Caspian Sea"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(193, 109)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+position_smoothing_enabled = true
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Towers" type="Node2D" parent="YSort"]
+y_sort_enabled = true
+
+[node name="tower" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(127, 91)
+
+[node name="tower2" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(85, 71)
+type = 2
+
+[node name="tower3" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(159, 85)
+
+[node name="tower4" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(132, 140)
+type = 2
+
+[node name="tower5" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(173, 155)
+
+[node name="tower6" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(164, 121)
+type = 2
+
+[node name="tower7" parent="YSort/Towers" instance=ExtResource("2_6fv2f")]
+position = Vector2(99, 109)
+
+[node name="Protesters" type="Node2D" parent="YSort"]
+y_sort_enabled = true
+
+[node name="CanvasLayerBG" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayerBG"]
+z_index = -15
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="unlockAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_3b7dt")
+bus = &"SFX"
+
+[node name="protestorAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_3b7dt")
+bus = &"SFX"
+
+[node name="mainAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8qtbx")
+}
+autoplay = "intro"
+
+[node name="winAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_48o5i")
+volume_db = -8.078
+bus = &"SFX"
+
+[connection signal="pressed" from="Victory/PlayButton" to="GameManager" method="_on_play_button_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton1" to="GameManager" method="_on_protester_buy_button_1_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton4" to="GameManager" method="_on_protester_buy_button_4_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton2" to="GameManager" method="_on_protester_buy_button_2_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton5" to="GameManager" method="_on_protester_buy_button_5_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton3" to="GameManager" method="_on_protester_buy_button_3_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterBuyButton6" to="GameManager" method="_on_protester_buy_button_6_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterActiveButton1" to="GameManager" method="_on_protester_active_button_1_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterActiveButton2" to="GameManager" method="_on_protester_active_button_2_pressed"]
+[connection signal="pressed" from="Ui/Active/ProtesterActiveButton3" to="GameManager" method="_on_protester_active_button_3_pressed"]
+[connection signal="mouse_entered" from="Iran/Area2D" to="GameManager" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Iran/Area2D" to="GameManager" method="_on_area_2d_mouse_exited"]
+[connection signal="tower_died" from="YSort/Towers/tower" to="GameManager" method="_on_tower_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower" to="GameManager" method="_on_tower_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower2" to="GameManager" method="_on_tower_2_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower2" to="GameManager" method="_on_tower_2_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower3" to="GameManager" method="_on_tower_3_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower3" to="GameManager" method="_on_tower_3_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower4" to="GameManager" method="_on_tower_4_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower4" to="GameManager" method="_on_tower_4_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower5" to="GameManager" method="_on_tower_5_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower5" to="GameManager" method="_on_tower_5_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower6" to="GameManager" method="_on_tower_6_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower6" to="GameManager" method="_on_tower_6_tower_up"]
+[connection signal="tower_died" from="YSort/Towers/tower7" to="GameManager" method="_on_tower_7_tower_died"]
+[connection signal="tower_up" from="YSort/Towers/tower7" to="GameManager" method="_on_tower_7_tower_up"]
