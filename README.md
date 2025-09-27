@@ -1,3 +1,8 @@
+## Links
+
+* Itch page: [https://ali-pouris.itch.io/iran-revolution](https://ali-pouris.itch.io/iran-revolution)
+* Gameplay video (YouTube): [https://youtu.be/nu1zQp0_GZc?t=7527](https://youtu.be/nu1zQp0_GZc?t=7527)
+
 # IRAN Revolution
 
 In this game, you must lead a revolution and take control of all the cities. But remember—cities can slip out of your control, so act fast! ⚡
@@ -35,11 +40,6 @@ Originally, the game was supposed to be different: each city would spawn guards,
 ![Game screenshot](screenshots/game.png)
 ![Game screenshot](screenshots/guid.png)
 ![Game screenshot](screenshots/gamecomplete.png.png)
-
-## Links
-
-* Itch page: [https://ali-pouris.itch.io/iran-revolution](https://ali-pouris.itch.io/iran-revolution)
-* Gameplay video (YouTube): [https://youtu.be/nu1zQp0_GZc?t=7527](https://youtu.be/nu1zQp0_GZc?t=7527)
 
 ## Credits
 
